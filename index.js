@@ -1,7 +1,5 @@
 /*!
- * is-odd <https://github.com/jonschlinkert/is-odd>
- *
- * Copyright (c) 2015-2017, Jon Schlinkert.
+ * Copyright (c) 2020, Zsolt R. Molnar.
  * Released under the MIT License.
  */
 
@@ -9,17 +7,12 @@
 
 const isNumber = require('is-number');
 
-module.exports = function isOdd(value) {
+module.exports = function isZero(value) {
   const n = Math.abs(value);
   if (!isNumber(n)) {
     throw new TypeError('expected a number');
   }
-  if (!Number.isInteger(n)) {
-    throw new Error('expected an integer');
-  }
-  if (!Number.isSafeInteger(n)) {
-    throw new Error('value exceeds maximum safe integer');
-  }
-  return (n % 2) === 1;
+  
+  return n === 0;
 };
 
