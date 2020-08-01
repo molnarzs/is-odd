@@ -2,34 +2,24 @@
 
 require('mocha');
 const assert = require('assert');
-const isOdd = require('./');
+const isZero = require('./');
 
-describe('isOdd', function() {
-  it('should return true if the number is odd:', function() {
-    assert(!isOdd(0));
-    assert(!isOdd(2));
-    assert(isOdd(1));
-    assert(isOdd(3));
-    assert(isOdd(-1));
-    assert(isOdd(-3));
-    assert(isOdd(1.0e0));
-    assert(isOdd(9007199254740991));
+describe('isZero', function() {
+  it('should return true if the number is zero:', function() {
+    assert(isZero(0));
+    assert(!isZero(1));
+    assert(!isZero(-1));
+    assert(!isZero(1.0e0));
+    assert(!isZero(9007199254740991));
   });
 
   it('should work with strings:', function() {
-    assert(!isOdd('0'));
-    assert(!isOdd('2'));
-    assert(isOdd('1'));
-    assert(isOdd('3'));
-    assert(isOdd('1.0e0'));
-    assert(isOdd('9007199254740991'));
+    assert(isZero('0'));
+    assert(!isZero('2'));
   });
 
   it('should throw an error when an invalid value is passed', function() {
-    assert.throws(() => isOdd(), /expected a number/);
-    assert.throws(() => isOdd('foo'), /expected a number/);
-    assert.throws(() => isOdd('1.1e0'), /expected an integer/);
-    assert.throws(() => isOdd('9007199254740992'), /value exceeds maximum safe integer/);
-    assert.throws(() => isOdd(9007199254740992), /value exceeds maximum safe integer/);
+    assert.throws(() => isZero(), /expected a number/);
+    assert.throws(() => isZero('foo'), /expected a number/);
   });
 });
